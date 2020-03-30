@@ -1,1 +1,1 @@
-# Akaiv Module template
+# Akaiv Emoticon module
