@@ -41,7 +41,7 @@ class EmotModule extends core_1.BotModule {
                 'Referer': item.url
             }
         });
-        await e.Message.replyRichTemplate(new core_1.AttachmentTemplate('', new core_1.TemplateAttachment(core_1.AttachmentType.IMAGE, name, buffer)));
+        await e.Message.replyRichTemplate(new core_1.AttachmentTemplate('', new core_1.TemplateAttachment(core_1.AttachmentType.IMAGE, `${name}.png`, buffer)));
     }
 }
 exports.EmotModule = EmotModule;

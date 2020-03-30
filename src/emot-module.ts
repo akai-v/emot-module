@@ -65,7 +65,7 @@ export class EmotModule extends BotModule {
             }
         });
 
-        await e.Message.replyRichTemplate(new AttachmentTemplate('', new TemplateAttachment(AttachmentType.IMAGE, name, buffer)));
+        await e.Message.replyRichTemplate(new AttachmentTemplate('', new TemplateAttachment(AttachmentType.IMAGE, `${name}.png`, buffer)));
     }
 
 }
