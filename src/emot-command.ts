@@ -131,3 +131,35 @@ export class InfoCommand implements CommandInfo {
         await e.Channel.sendText(`이모지 정보\n업로더: ${item.uploaderNickname} (${item.uploaderId})\n업로드 된 날짜: ${new Date(item.uploadedDate).toString()}\n원주소: ${item.url}`);
     }
 }
+
+export class ListCommand implements CommandInfo {
+
+    constructor(private databaseManager: DatabaseManager) {
+        
+    }
+    
+    get CommandList() {
+        return [ 'list' ];
+    }
+
+    get Description() {
+        return '이모지 목록';
+    }
+
+    get Usage() {
+        return 'con/list';
+    }
+    
+    async onCommand(e: BotCommandEvent, logger: Logger) {
+        let list = await this.databaseManager.getChannelList(e.Channel.IdentityId);
+
+        let str = `${e.Channel.Name} 의 이모지 목록\n\n`;
+
+        for (let name in list) {
+            let con = list[name];
+            str += `${name} by ${con.uploaderNickname}(${con.uploaderId})`;
+        }
+
+        await e.Channel.sendText(str);
+    }
+}

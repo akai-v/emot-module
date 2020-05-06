@@ -24,3 +24,11 @@ export declare class InfoCommand implements CommandInfo {
     get Usage(): string;
     onCommand(e: BotCommandEvent, logger: Logger): Promise<void>;
 }
+export declare class ListCommand implements CommandInfo {
+    private databaseManager;
+    constructor(databaseManager: DatabaseManager);
+    get CommandList(): string[];
+    get Description(): string;
+    get Usage(): string;
+    onCommand(e: BotCommandEvent, logger: Logger): Promise<void>;
+}

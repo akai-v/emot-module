@@ -97,4 +97,28 @@ class InfoCommand {
     }
 }
 exports.InfoCommand = InfoCommand;
+class ListCommand {
+    constructor(databaseManager) {
+        this.databaseManager = databaseManager;
+    }
+    get CommandList() {
+        return ['list'];
+    }
+    get Description() {
+        return '이모지 목록';
+    }
+    get Usage() {
+        return 'con/list';
+    }
+    async onCommand(e, logger) {
+        let list = await this.databaseManager.getChannelList(e.Channel.IdentityId);
+        let str = `${e.Channel.Name} 의 이모지 목록\n\n`;
+        for (let name in list) {
+            let con = list[name];
+            str += `${name} by ${con.uploaderNickname}(${con.uploaderId})`;
+        }
+        await e.Channel.sendText(str);
+    }
+}
+exports.ListCommand = ListCommand;
 //# sourceMappingURL=emot-command.js.map

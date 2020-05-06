@@ -4,6 +4,9 @@ class DatabaseManager {
     constructor(dbEntry) {
         this.dbEntry = dbEntry;
     }
+    async getChannelList(chanId) {
+        return await this.dbEntry.get(chanId);
+    }
     async getChannelEntry(chanId) {
         return await this.dbEntry.getEntry(chanId);
     }

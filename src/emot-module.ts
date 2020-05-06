@@ -1,5 +1,5 @@
 import { BotModule, DatabaseEntry, BotMessageEvent, AttachmentTemplate, TemplateAttachment, AttachmentType } from "@akaiv/core";
-import { AddCommand, InfoCommand, RemoveCommand } from "./emot-command";
+import { AddCommand, InfoCommand, RemoveCommand, ListCommand } from "./emot-command";
 import { DatabaseManager } from "./database-manager";
 import * as request from "request-promise";
 
@@ -22,6 +22,7 @@ export class EmotModule extends BotModule {
 
         this.CommandManager.addCommand(new AddCommand(this.databaseManager));
         this.CommandManager.addCommand(new InfoCommand(this.databaseManager));
+        this.CommandManager.addCommand(new ListCommand(this.databaseManager));
         this.CommandManager.addCommand(new RemoveCommand(this.databaseManager));
 
         this.on('message', this.onConMessage.bind(this));

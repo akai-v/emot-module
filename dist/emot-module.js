@@ -10,6 +10,7 @@ class EmotModule extends core_1.BotModule {
         this.databaseManager = new database_manager_1.DatabaseManager(dbEntry);
         this.CommandManager.addCommand(new emot_command_1.AddCommand(this.databaseManager));
         this.CommandManager.addCommand(new emot_command_1.InfoCommand(this.databaseManager));
+        this.CommandManager.addCommand(new emot_command_1.ListCommand(this.databaseManager));
         this.CommandManager.addCommand(new emot_command_1.RemoveCommand(this.databaseManager));
         this.on('message', this.onConMessage.bind(this));
     }

@@ -12,6 +12,10 @@ export class DatabaseManager {
         
     }
 
+    async getChannelList(chanId: string): Promise<EmoticonList> {
+        return await this.dbEntry.get(chanId) as EmoticonList;
+    }
+
     async getChannelEntry(chanId: string): Promise<DatabaseEntry> {
         return await this.dbEntry.getEntry(chanId);
     }
@@ -34,6 +38,12 @@ export class DatabaseManager {
 
         return item as EmoticonItem;
     }
+
+}
+
+export interface EmoticonList {
+
+    [key: string]: EmoticonItem;
 
 }
 
