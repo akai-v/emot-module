@@ -155,9 +155,10 @@ export class ListCommand implements CommandInfo {
 
         let str = `${e.Channel.Name} 의 이모지 목록\n\n`;
 
+        let i = 0;
         for (let name in list) {
             let con = list[name];
-            str += `${name} by ${con.uploaderNickname}(${con.uploaderId})`;
+            str += `${++i}: :${name}: by ${con.uploaderNickname}(${con.uploaderId})\n`;
         }
 
         await e.Channel.sendText(str);
