@@ -51,7 +51,7 @@ export class EmotModule extends BotModule {
     protected async onConMessage(e: BotMessageEvent) {
         let text = e.Message.Text;
 
-        if (text[0] !== ':' && text[text.length - 1] !== ':') return;
+        if (text[0] !== ':' || text[text.length - 1] !== ':') return;
 
         let name = text.substring(1, text.length - 1);
         let item = await this.databaseManager.getEmoticon(e.Message.Channel.IdentityId, name);
