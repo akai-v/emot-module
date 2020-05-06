@@ -116,7 +116,7 @@ class ListCommand {
         let i = 0;
         for (let name in list) {
             let con = list[name];
-            str += `${++i}: :${name}: by ${con.uploaderNickname}\n`;
+            str += `${++i}. :${name}: by ${con.uploaderNickname}\n`;
         }
         await e.Channel.sendText(str);
     }
